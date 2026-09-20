@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Hind Siliguri', 'Outfit', sans-serif;
+  box-sizing: border-box;
+}
+
+/* উইন্ডমিল অ্যানিমেশন */
+@keyframes spinBlades {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.windmill-blade {
+  transform-origin: 50% 50%;
+  animation: spinBlades 3s linear infinite;
+}
+
+/* মেঘের মুভমেন্ট */
+@keyframes cloudDrift {
+  0% { transform: translateX(-120px); }
+  100% { transform: translateX(450px); }
+}
+.cloud-slow { animation: cloudDrift 28s linear infinite; }
+.cloud-fast { animation: cloudDrift 18s linear infinite; }
+
+/* ভাসমান টাকা অ্যানিমেশন */
+@keyframes popTaka {
+  0% { opacity: 1; transform: translateY(0) scale(0.8); }
+  50% { transform: translateY(-40px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-75px) scale(1); }
+}
+.floating-taka {
+  position: absolute;
+  pointer-events: none;
+  font-weight: 800;
+  color: #FFDF00;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  animation: popTaka 0.8s ease-out forwards;
+  z-index: 100;
+}
+
+/* তারা ঝিকমিক */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)); }
+}
+.star-twinkle { animation: twinkle 2.8s ease-in-out infinite alternate; }
+.star-delay-1 { animation-delay: 0.8s; }
+.star-delay-2 { animation-delay: 1.6s; }
+
+/* জাতীয় পতাকা সুইং */
+@keyframes flagSwayLeft {
+  0%, 100% { transform: perspective(400px) rotateY(0deg) skewY(0deg); }
+  25% { transform: perspective(400px) rotateY(16deg) skewY(3.5deg) scaleX(0.95); }
+  50% { transform: perspective(400px) rotateY(-12deg) skewY(-3deg) scaleX(1.03); }
+  75% { transform: perspective(400px) rotateY(10deg) skewY(2deg) scaleX(0.97); }
+}
+@keyframes flagSwayRight {
+  0%, 100% { transform: perspective(400px) rotateY(0deg) skewY(0deg); }
+  25% { transform: perspective(400px) rotateY(-16deg) skewY(-3.5deg) scaleX(0.95); }
+  50% { transform: perspective(400px) rotateY(12deg) skewY(3deg) scaleX(1.03); }
+  75% { transform: perspective(400px) rotateY(-10deg) skewY(-2deg) scaleX(0.97); }
+}
+.bd-flag-wave-left {
+  transform-box: fill-box;
+  transform-origin: 100% 0%;
+  animation: flagSwayLeft 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+.bd-flag-wave-right {
+  transform-box: fill-box;
+  transform-origin: 0% 0%;
+  animation: flagSwayRight 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes flagFastFlutterLeft {
+  0%, 100% { transform: perspective(400px) rotateY(0deg) skewY(0deg); }
+  30% { transform: perspective(400px) rotateY(24deg) skewY(6deg) scaleX(0.92); }
+  70% { transform: perspective(400px) rotateY(-18deg) skewY(-5deg) scaleX(1.05); }
+}
+@keyframes flagFastFlutterRight {
+  0%, 100% { transform: perspective(400px) rotateY(0deg) skewY(0deg); }
+  30% { transform: perspective(400px) rotateY(-24deg) skewY(-6deg) scaleX(0.92); }
+  70% { transform: perspective(400px) rotateY(18deg) skewY(5deg) scaleX(1.05); }
+}
+.flag-tap-fast-left { animation: flagFastFlutterLeft 0.35s ease-in-out 3 !important; }
+.flag-tap-fast-right { animation: flagFastFlutterRight 0.35s ease-in-out 3 !important; }
+
+/* জঙ্গল ন্যাভ বার */
+@keyframes jungleLeafSway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.2px) rotate(0.8deg); }
+}
+.jungle-leaves-anim {
+  animation: jungleLeafSway 4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.stone-slab-card {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 45%, #0f172a 100%);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.65), inset 0 2px 4px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.6);
+  border: 2px solid #475569;
+}
+.stone-inner-panel {
+  background: linear-gradient(180deg, #111a28 0%, #080d15 100%);
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.85), 0 1px 1px rgba(255,255,255,0.1);
+  border: 1.5px solid #1e293b;
+}
+
+/* পপআপ মডাল */
+@keyframes modalPopIn {
+  0% { opacity: 0; transform: scale(0.78) translateY(18px); }
+  65% { transform: scale(1.025) translateY(-3px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-pop-animate {
+  animation: modalPopIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* গাছের গোড়া স্থির রেখে ডালপালা দোলা / শেক অ্যানিমেশন */
+@keyframes treeShake {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-6deg) scale(1.02); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(1.5deg); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.tree-shake {
+  animation: treeShake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform-origin: bottom center;
+}
+
